@@ -14,6 +14,19 @@ find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
+find_package(spider_warehouse REQUIRED)
+install(PROGRAMS
+  src/test.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+install(PROGRAMS
+  src/test1.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+install(PROGRAMS
+  src/test2.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
@@ -29,11 +42,13 @@ install(
   DIRECTORY
     launch
     worlds
-    models
+    urdf
     meshes
     plugins
     config
+    
   DESTINATION
     share/${PROJECT_NAME}/
 )
+
 ament_package()

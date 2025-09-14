@@ -1,0 +1,870 @@
+<robot name="spider_description">
+  <link name="dummy_base" />
+
+  <joint name="dummy_base_to_base_link" type="fixed">
+    <parent link="dummy_base" />
+    <child link="base_link" />
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+  <link name="base_link">
+    <inertial>
+      <origin xyz="0.0419124697856288 0.00194512919498489 0.0129912705123136" rpy="0 0 0" />
+      <mass value="0.206593361987693" />
+      <inertia ixx="0.000100835459421752" ixy="-6.85143109069959E-05" ixz="3.31903264428765E-07" iyy="0.000612159753876248" iyz="7.47632670675686E-08" izz="0.000699628428109392" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/base_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RL1_coxa">
+    <inertial>
+      <origin xyz="-0.00349164005789518 0.0172300074490141 0.0244390510670151" rpy="0 0 0" />
+      <mass value="0.0118214567647082" />
+      <inertia ixx="1.54720121311925E-06" ixy="-3.57556897862798E-08" ixz="-4.02761529137734E-08" iyy="1.03828172792338E-06" iyz="-8.80256909637123E-10" izz="1.47258341600743E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL1_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL1_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1_coxa" type="continuous">
+    <origin xyz="0.14302 -0.028828 0.0018039" rpy="1.5708 0 0.60122" />
+    <parent link="base_link" />
+    <child link="RL1_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL1_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 -1.38777878078145E-17 -0.00234030420177818" rpy="0 0 0" />
+      <mass value="0.00732061922605989" />
+      <inertia ixx="1.66034801156124E-06" ixy="-5.29395592033938E-22" ixz="-1.49987503139451E-09" iyy="3.33489508651992E-06" iyz="-2.11758236813575E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL1_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL1_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1_fumer" type="continuous">
+    <origin xyz="-0.0059198 0.0221 0.026855" rpy="-2.0354 1.0696 1.1567" />
+    <parent link="RL1_coxa" />
+    <child link="RL1_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL1_tibia">
+    <inertial>
+      <origin xyz="0.0026015472226265 -0.0130975375884837 0.000727426107816176" rpy="0 0 0" />
+      <mass value="0.0131238915537926" />
+      <inertia ixx="4.22996621810264E-06" ixy="1.19149401954703E-07" ixz="-1.17548940136716E-08" iyy="7.82194138869205E-07" iyz="-2.83284563170215E-07" izz="4.42455940433514E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL1_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL1_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint1_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="3.14159265358979 1.35383304701328 0.45541675484875" />
+    <parent link="RL1_fumer" />
+    <child link="RL1_tibia" />
+    <axis xyz="0.976555650922224 0 0.21526509390022" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL2_coxa">
+    <inertial>
+      <origin xyz="-0.00137410436525083 0.0172300079511928 0.0246489469646006" rpy="0 0 0" />
+      <mass value="0.0118214569541968" />
+      <inertia ixx="1.53973642077788E-06" ixy="-3.56985158373652E-08" ixz="-4.60808282191804E-08" iyy="1.0382816314569E-06" iyz="2.20230674733217E-09" izz="1.48004767988558E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL2_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL2_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2_coxa" type="continuous">
+    <origin xyz="0.083025 -0.036601 0.0018039" rpy="1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="RL2_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL2_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 1.38777878078145E-17 -0.00234030420177736" rpy="0 0 0" />
+      <mass value="0.00732061922605988" />
+      <inertia ixx="1.66034801156124E-06" ixy="5.29395592033938E-23" ixz="-1.49987503139717E-09" iyy="3.33489508651991E-06" iyz="1.05879118406788E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL2_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL2_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2_fumer" type="continuous">
+    <origin xyz="-0.00358516044020271 0.0220999999999999 0.027265300743216" rpy="-1.96635013509526 1.22564253387824 1.19639468178544" />
+    <parent link="RL2_coxa" />
+    <child link="RL2_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL2_tibia">
+    <inertial>
+      <origin xyz="0.00373414548593776 -0.0130839558065926 0.00111120131468931" rpy="0 0 0" />
+      <mass value="0.0131238945709346" />
+      <inertia ixx="4.23019156808467E-06" ixy="7.84255900620934E-08" ixz="1.01964592236264E-09" iyy="7.65338600134478E-07" iyz="-1.63714042120736E-07" izz="4.4411901162674E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL2_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL2_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint2_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="-3.1416 1.4401 0.32035" />
+    <parent link="RL2_fumer" />
+    <child link="RL2_tibia" />
+    <axis xyz="0.99147 0 0.13037" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL3_coxa">
+    <inertial>
+      <origin xyz="0.00349357804156721 0.0172300087939702 0.0244387737682328" rpy="0 0 0" />
+      <mass value="0.0118214592735859" />
+      <inertia ixx="1.51968707139066E-06" ixy="-3.45707433343636E-08" ixz="-5.4020292631234E-08" iyy="1.0382817957142E-06" iyz="9.17029253519079E-09" izz="1.50009780239266E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL3_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL3_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint3_coxa" type="continuous">
+    <origin xyz="0.0230267493876147 -0.0443736083394228 0.00180390069504786" rpy="1.5707963267949 0 -0.472149585715113" />
+    <parent link="base_link" />
+    <child link="RL3_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL3_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 -1.38777878078145E-17 -0.00234030420177761" rpy="0 0 0" />
+      <mass value="0.00732061922605987" />
+      <inertia ixx="1.66034801156124E-06" ixy="-1.16467030247466E-21" ixz="-1.49987503139679E-09" iyy="3.33489508651991E-06" iyz="-8.99972506457694E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL3_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL3_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint3_fumer" type="continuous">
+    <origin xyz="0.00183942151113823 0.0220999999999999 0.0274384133743986" rpy="-1.48461478428462 0.680765280133814 1.62511913782005" />
+    <parent link="RL3_coxa" />
+    <child link="RL3_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL3_tibia">
+    <inertial>
+      <origin xyz="0.00272348248477123 -0.0130894484904979 0.000302596670154601" rpy="0 0 0" />
+      <mass value="0.0131238945459342" />
+      <inertia ixx="4.23878067567191E-06" ixy="4.20084297779206E-08" ixz="4.1875712377848E-08" iyy="7.69154583662019E-07" iyz="-2.12494139960766E-07" izz="4.42878502193697E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL3_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL3_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint3_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="0 1.50385829483433 -2.56000504688249" />
+    <parent link="RL3_fumer" />
+    <child link="RL3_tibia" />
+    <axis xyz="0.997760486341758 0 -0.0668880549504797" />
+    <limit effort="20.0" velocity="1.0" />
+
+  </joint>
+  <link name="RL4_coxa">
+    <inertial>
+      <origin xyz="0.000221645762317584 0.017233990044243 0.0247738647215934" rpy="0 0 0" />
+      <mass value="0.0118311173645293" />
+      <inertia ixx="1.51589418009088E-06" ixy="3.36931862404341E-08" ixz="5.44220173389888E-08" iyy="1.03946613397378E-06" iyz="1.04055920493148E-08" izz="1.50574537269555E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL4_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL4_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint4_coxa" type="continuous">
+    <origin xyz="-0.036972 -0.052147 0.0018039" rpy="1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="RL4_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL4_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 -1.38777878078145E-17 0.00455969579822268" rpy="0 0 0" />
+      <mass value="0.00732061922605988" />
+      <inertia ixx="1.66034801156124E-06" ixy="5.29395592033938E-22" ixz="-1.49987503139543E-09" iyy="3.33489508651991E-06" iyz="3.30872245021211E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL4_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL4_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint4_fumer" type="continuous">
+    <origin xyz="-0.0028905 0.0221 0.027348" rpy="1.4151 0.82627 1.4558" />
+    <parent link="RL4_coxa" />
+    <child link="RL4_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="RL4_tibia">
+    <inertial>
+      <origin xyz="0.00461943235034938 -0.0124119057494399 -0.00371988244958756" rpy="0 0 0" />
+      <mass value="0.0131238915832408" />
+      <inertia ixx="4.23942335671897E-06" ixy="1.02033757545884E-07" ixz="-4.08466849980063E-09" iyy="1.36774622760594E-06" iyz="-1.36758688235976E-06" izz="3.82955020041708E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/RL4_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/RL4_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint4_tibia" type="continuous">
+    <origin xyz="-0.0550000000000007 0 0" rpy="0 -1.4654938088774 -0.738464203109028" />
+    <parent link="RL4_fumer" />
+    <child link="RL4_tibia" />
+    <axis xyz="0.994460811195995 0 0.105108015847522" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL1_coxa">
+    <inertial>
+      <origin xyz="0.0170998829456735 0.0172339868446963 -0.0179272815287505" rpy="0 0 0" />
+      <mass value="0.0118311175968466" />
+      <inertia ixx="1.45657032662236E-06" ixy="-1.69225127081701E-08" ixz="6.6690604598061E-09" iyy="1.0394662195964E-06" iyz="-3.09379598799848E-08" izz="1.56506993041627E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL1_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL1_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint5_coxa" type="continuous">
+    <origin xyz="0.12143 0.056102 0.0018039" rpy="1.5708 0 -0.12925" />
+    <parent link="base_link" />
+    <child link="LL1_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL1_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 -1.38777878078145E-17 0.00455969579822259" rpy="0 0 0" />
+      <mass value="0.00732061922605988" />
+      <inertia ixx="1.66034801156124E-06" ixy="-9.79381845262785E-22" ixz="-1.49987503139472E-09" iyy="3.33489508651991E-06" iyz="-1.6940658945086E-21" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL1_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL1_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint5_fumer" type="continuous">
+    <origin xyz="0.0211255891188235 0.0220999999999999 -0.0176056662578459" rpy="-2.67256230035857 -0.533155379057018 2.35767887359705" />
+    <parent link="LL1_coxa" />
+    <child link="LL1_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL1_tibia">
+    <inertial>
+      <origin xyz="-0.00279894253481278 -0.0130976425422804 -0.0031384336970829" rpy="0 0 0" />
+      <mass value="0.0131238915475162" />
+      <inertia ixx="4.36602524922464E-06" ixy="-2.59110660060209E-07" ixz="-7.85274834003549E-08" iyy="7.97432594738258E-07" iyz="2.87128223672932E-07" izz="4.27326190737941E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL1_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL1_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint5_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="-3.14159265358979 0.694766453403042 2.4879765741821" />
+    <parent link="LL1_fumer" />
+    <child link="LL1_tibia" />
+    <axis xyz="0.640206045739847 0 0.768203240684488" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL2_coxa">
+    <inertial>
+      <origin xyz="0.0127223136312809 0.0169176380368381 -0.0226841698345239" rpy="0 0 0" />
+      <mass value="0.0118311153864136" />
+      <inertia ixx="1.56088145996956E-06" ixy="-2.81605475151796E-08" ixz="2.19397573465521E-08" iyy="1.03946620496031E-06" iyz="-2.12254323475495E-08" izz="1.46075806401663E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL2_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL2_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint6_coxa" type="continuous">
+    <origin xyz="0.061435 0.048329 0.0018039" rpy="1.5708 0 0" />
+    <parent link="base_link" />
+    <child link="LL2_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL2_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 -1.38777878078145E-17 0.0120596957982223" rpy="0 0 0" />
+      <mass value="0.00732061922605988" />
+      <inertia ixx="1.66034801156124E-06" ixy="-6.68361934942846E-22" ixz="-1.49987503139737E-09" iyy="3.33489508651991E-06" iyz="4.76456032830544E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL2_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL2_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint6_fumer" type="continuous">
+    <origin xyz="0.0204800515080558 0.0220999999999999 -0.0183525881070601" rpy="-3.06812253072566 -0.727643744163724 3.03137911431499" />
+    <parent link="LL2_coxa" />
+    <child link="LL2_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL2_tibia">
+    <inertial>
+      <origin xyz="-0.00780216947933945 -0.0130983962022635 -0.00872256136528804" rpy="0 0 0" />
+      <mass value="0.0131238915503292" />
+      <inertia ixx="4.36428686800826E-06" ixy="-2.172343973603E-07" ixz="-8.58851317959739E-08" iyy="7.89056070109124E-07" iyz="2.68586330967299E-07" izz="4.28337681328811E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL2_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL2_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint6_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="3.14159265358979 0.730667432781408 3.05936528141118" />
+    <parent link="LL2_fumer" />
+    <child link="LL2_tibia" />
+    <axis xyz="0.667366840256722 0 0.744729145747471" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL3_coxa">
+    <inertial>
+      <origin xyz="0.0139602511615753 0.0172339841699638 -0.0204671653605546" rpy="0 0 0" />
+      <mass value="0.011831115338393" />
+      <inertia ixx="1.46157171906711E-06" ixy="-2.17238956764402E-08" ixz="2.37096972238414E-08" iyy="1.03946620191304E-06" iyz="-2.7777820329616E-08" izz="1.56006778830444E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL3_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL3_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint7_coxa" type="continuous">
+    <origin xyz="0.00143606445544368 0.0405563176240433 0.0018039006950479" rpy="1.5707963267949 0 0" />
+    <parent link="base_link" />
+    <child link="LL3_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL3_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 -6.93889390390723E-18 0.00455969579822243" rpy="0 0 0" />
+      <mass value="0.00732061922605988" />
+      <inertia ixx="1.66034801156124E-06" ixy="1.58818677610181E-22" ixz="-1.49987503139568E-09" iyy="3.33489508651991E-06" iyz="5.82335151237331E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL3_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL3_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint7_fumer" type="continuous">
+    <origin xyz="0.017985 0.0221 -0.020804" rpy="-2.6723 -0.74768 2.5008" />
+    <parent link="LL3_coxa" />
+    <child link="LL3_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL3_tibia">
+    <inertial>
+      <origin xyz="-0.00309435714249497 -0.00999543059425622 -0.0030493745825302" rpy="0 0 0" />
+      <mass value="0.0211237958538192" />
+      <inertia ixx="4.99508662448161E-06" ixy="-1.39393644239941E-07" ixz="-2.67338619138422E-07" iyy="1.32635279662588E-06" iyz="1.78140042801754E-07" izz="5.01286564268681E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL3_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL3_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint7_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="-3.1416 0.85795 2.6878" />
+    <parent link="LL3_fumer" />
+    <child link="LL3_tibia" />
+    <axis xyz="0.7565 0 0.65399" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL4_coxa">
+    <inertial>
+      <origin xyz="0.000589849927419374 0.0172300079708138 -0.0246801707065127" rpy="0 0 0" />
+      <mass value="0.0118214570337636" />
+      <inertia ixx="1.53674789189216E-06" ixy="3.56104641454213E-08" ixz="-4.78841680583551E-08" iyy="1.03828163670518E-06" iyz="-3.33600234778201E-09" izz="1.48303623476792E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL4_coxa.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL4_coxa.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint8_coxa" type="continuous">
+    <origin xyz="-0.058562522374242 0.0327833144437591 0.00180390069504791" rpy="1.5707963267949 0 -0.0418694470217003" />
+    <parent link="base_link" />
+    <child link="LL4_coxa" />
+    <axis xyz="0 1 0" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL4_fumer">
+    <inertial>
+      <origin xyz="-0.0264233888332986 0 -0.00234030420177719" rpy="0 0 0" />
+      <mass value="0.00732061922605988" />
+      <inertia ixx="1.66034801156124E-06" ixy="2.64697796016969E-22" ixz="-1.49987503139504E-09" iyy="3.33489508651991E-06" iyz="-6.22039820639877E-22" izz="1.85153973126671E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL4_fumer.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL4_fumer.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint8_fumer" type="continuous">
+    <origin xyz="0.0027166 0.0221 -0.027365" rpy="1.3738 -1.0416 1.7414" />
+    <parent link="LL4_coxa" />
+    <child link="LL4_fumer" />
+    <axis xyz="0 0 1" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <link name="LL4_tibia">
+    <inertial>
+      <origin xyz="-0.00283536516046236 -0.0130639384515492 0.000369862300289514" rpy="0 0 0" />
+      <mass value="0.0131238945688463" />
+      <inertia ixx="4.22467234079409E-06" ixy="-1.76334016123317E-07" ixz="9.44067803612652E-09" iyy="8.58389049593472E-07" iyz="5.78334582187715E-07" izz="4.35365889458624E-06" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/visual/LL4_tibia.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="file://$(find spider_description)/meshes/collision/LL4_tibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="joint8_tibia" type="continuous">
+    <origin xyz="-0.055 0 0" rpy="0 -1.36202617641292 -2.67503329549255" />
+    <parent link="LL4_fumer" />
+    <child link="LL4_tibia" />
+    <axis xyz="0.978286549337221 0 0.207256911551514" />
+    <limit effort="20.0" velocity="1.0" />
+  </joint>
+  <ros2_control name="LeggedSystemPositionOnly" type="system">
+    <hardware>
+      <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+    </hardware>
+
+    <joint name="joint1_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint1_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint1_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint2_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint2_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint2_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint3_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint3_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint3_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint4_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint4_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint4_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint5_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint5_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint5_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint6_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint6_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint6_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint7_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint7_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint7_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+
+    <joint name="joint8_coxa">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint8_fumer">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+    <joint name="joint8_tibia">
+      <command_interface name="position" />
+      <state_interface name="position" />
+      <state_interface name="velocity" />
+    </joint>
+  </ros2_control>
+  <!-- ############ GAZEBO ROS2 CONTROL PLUGIN ############ -->
+  <gazebo>
+    <plugin name="ign_ros2_control::IgnitionROS2ControlPlugin" filename="libgz_ros2_control-system.so">
+      <parameters>
+      $(find spider_description)/config/controller.yaml
+      </parameters>
+    </plugin>
+  </gazebo>
+
+</robot>

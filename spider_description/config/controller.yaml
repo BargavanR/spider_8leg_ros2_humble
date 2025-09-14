@@ -1,0 +1,176 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    position_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+position_controller:
+  ros__parameters:
+    joints:
+      - joint1_coxa
+      - joint1_fumer
+      - joint1_tibia
+      - joint2_coxa
+      - joint2_fumer
+      - joint2_tibia
+      - joint3_coxa
+      - joint3_fumer
+      - joint3_tibia
+      - joint4_coxa
+      - joint4_fumer
+      - joint4_tibia
+      - joint5_coxa
+      - joint5_fumer
+      - joint5_tibia
+      - joint6_coxa
+      - joint6_fumer
+      - joint6_tibia
+      - joint7_coxa
+      - joint7_fumer
+      - joint7_tibia
+      - joint8_coxa
+      - joint8_fumer
+      - joint8_tibia
+    # gains:
+    #   joint1_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint1_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint1_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint2_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint2_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint2_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint3_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint3_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint3_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint4_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint4_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint4_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint5_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint5_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint5_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint6_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint6_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint6_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint7_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint7_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint7_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+
+    #   joint8_coxa:
+    #     p: 15.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint8_fumer:
+    #     p: 12.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    #   joint8_tibia:
+    #     p: 20.0
+    #     i: 0.01
+    #     d: 0.1
+    #     i_clamp: 1.0
+    command_interfaces:
+      - position
+
+    state_interfaces:
+      - position
+      - velocity
+
+    # Optional: trajectory execution tuning
+    state_publish_rate: 10.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
