@@ -1,14 +1,15 @@
-controller_manager:
-  ros__parameters:
-    update_rate: 100
+controller_manager: # Root node for ros2_control controller manager
+  ros__parameters: # ROS 2 parameters for controller manager
+    update_rate: 100 # Control loop frequency (Hz) → updates controllers 100 times/sec
 
-    joint_state_broadcaster:
+    joint_state_broadcaster: # A broadcaster that publishes all joint states
       type: joint_state_broadcaster/JointStateBroadcaster
 
-    position_controller:
+    position_controller: # Main trajectory controller (handles motion commands)
       type: joint_trajectory_controller/JointTrajectoryController
+# Configure the position_controller
 
-position_controller:
+position_controller: # List of all joints controlled by this controller
   ros__parameters:
     joints:
       - joint1_coxa
@@ -163,14 +164,20 @@ position_controller:
     #     i: 0.01
     #     d: 0.1
     #     i_clamp: 1.0
-    command_interfaces:
-      - position
 
-    state_interfaces:
-      - position
-      - velocity
+    # PID gains (commented out here but can be tuned per joint if needed)
+    # Each joint can have its own proportional (p), integral (i), derivative (d) gains
+    # Example structure shown for joint1_coxa, joint1_fumer, joint1_tibia, etc.
+    # These would improve stability and responsiveness of joint movements.
 
-    # Optional: trajectory execution tuning
-    state_publish_rate: 10.0
-    action_monitor_rate: 20.0
-    allow_partial_joints_goal: false
+    command_interfaces: # Interfaces used for sending commands
+      - position # Controller sends desired joint positions
+
+    state_interfaces: # Interfaces for feedback/state reporting
+      - position # Reports current joint positions
+      - velocity # Reports current joint velocities
+
+    # Optional: fine-tuning for trajectory execution
+    state_publish_rate: 10.0 # Publish state feedback at 10 Hz
+    action_monitor_rate: 20.0 # Monitor trajectory execution at 20 Hz
+    allow_partial_joints_goal: false # Require commands for all joints (no partial trajectories)
