@@ -41,7 +41,7 @@
         <geometry>
           <plane>
             <normal>0 0 1</normal>
-            <size>20 20</size>
+            <size>10 11</size>
           </plane>
         </geometry>
         <material>
