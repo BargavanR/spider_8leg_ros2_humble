@@ -4,7 +4,7 @@
 *****************************************************************************************
 *  Filename:       spider_gazebo.launch.py
 *  Description:    spawn spider in gazebo and implement ros2_control
-*  Modified by:    BARGAVAN R
+*  created by:    BARGAVAN R
 *  Author:         SPIDER TEAM - MIT
 *****************************************************************************************
 '''
@@ -152,23 +152,30 @@ def generate_launch_description():
         ),
 
         # ---------------------------
-        # Non-GUI joint_state_publisher
-        # ---------------------------
-        Node(
-            package="joint_state_publisher",
-            executable="joint_state_publisher",
-            name="joint_state_publisher",
-            output="screen",
-            parameters=[controllers_param],  # Reads joint states for TF
-        ),
-
-        # ---------------------------
+        # # Non-GUI joint_state_publisher
+        # # ---------------------------
+        # Node(
+        #     package="joint_state_publisher",
+        #     executable="joint_state_publisher",
+        #     name="joint_state_publisher",
+        #     output="screen",
+        #     parameters=[controllers_param],  # Reads joint states for TF
+        # ),
+        # Node(
+        # package="joint_state_publisher_gui",
+        # executable="joint_state_publisher_gui",
+        # name="joint_state_publisher_gui",
+        # output="screen",
+        # parameters=[{"robot_description": robot_description}],  # give robot model
+        # ),
+            # ---------------------------
         # Optional GUI joint publisher
         # ---------------------------
-        Node(
-            package="joint_state_publisher_gui",
-            executable="joint_state_publisher_gui",
-            name="joint_state_publisher_gui",
-            output="screen",
-        ),
+        # Node(
+        #     package="joint_state_publisher_gui",
+        #     executable="joint_state_publisher_gui",
+        #     name="joint_state_publisher_gui",
+        #     output="screen",
+        #     parameters=[controllers_param],
+        # ),
     ])
