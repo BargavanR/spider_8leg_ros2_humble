@@ -1,14 +1,12 @@
 #!/usr/bin/env python3
-
 '''
 *****************************************************************************************
-*  Filename:       gait.py
-*  Description:    gait plan nadanchuuuu swagaaaa
+*  Filename:       circle_gait.py
+*  Description:    circle gait plan nadanchuuuu swagaaaa
 *  created by:    BARGAVAN R
 *  Author:         SPIDER TEAM - MIT
 *****************************************************************************************
 '''
-
 import rclpy
 from rclpy.node import Node
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
@@ -18,13 +16,13 @@ class SequentialGaitPublisher(Node):
         super().__init__('sequential_gait_publisher')
         self.pub = self.create_publisher(JointTrajectory, '/position_controller/joint_trajectory', 10)
 
-        # Define leg joints (only coxa for movement)
+        # Define coxa joints
         self.legs_coxa = [
             'joint1_coxa', 'joint2_coxa', 'joint3_coxa', 'joint4_coxa',
             'joint5_coxa', 'joint6_coxa', 'joint7_coxa', 'joint8_coxa'
         ]
 
-        # Full joint list (coxa + femur + tibia) for trajectory
+        # Full joint list
         self.joint_names = [
             'joint1_coxa', 'joint1_fumer', 'joint1_tibia',
             'joint2_coxa', 'joint2_fumer', 'joint2_tibia',
@@ -36,37 +34,43 @@ class SequentialGaitPublisher(Node):
             'joint8_coxa', 'joint8_fumer', 'joint8_tibia'
         ]
 
-        # Desired sequence: 1,5,2,6,3,7,4,8 (0-indexed in Python)
-        self.sequence = [0, 4, 1, 5, 2, 6, 3, 7]
-        self.seq=[(1,5),(2,6),(3,7),(4,8)]
+        # Leg pairs: (front, back)
+        self.seq = [(0, 4), (1, 5), (2, 6), (3, 7)]
         self.current_step = 0
-        self.timer = self.create_timer(1.0, self.timer_callback)  # 1 Hz step
+
+        # Faster gait (0.3 sec instead of 1 sec)
+        self.timer = self.create_timer(0.3, self.timer_callback)
 
     def timer_callback(self):
         traj = JointTrajectory()
         traj.joint_names = self.joint_names
         point = JointTrajectoryPoint()
-        '''
-        here the self.seq is the concept where i want my coxa's to move in in directions and joint 1 coxa moves to +45 deg and joint 5 moves simultNEOUSLY AND WHEN joint 2 and 6 moves and that time  those 1 and 5 comes 0 and then this seq continous
-        '''
-        # Reset all joints to 0
+
+        # Reset all to 0
         positions = [0.0] * len(self.joint_names)
 
-        # Move only the coxa joint in the current sequence
-        leg_idx = self.sequence[self.current_step]
-        coxa_joint = self.legs_coxa[leg_idx]
-        idx = self.joint_names.index(coxa_joint)
-        positions[idx] = 1.57  # move 90 degrees
+        # Current leg pair
+        leg_pair = self.seq[self.current_step]
+
+        # Forward legs (1,2,3,4) swing forward (+45°)
+        idx_f = self.joint_names.index(self.legs_coxa[leg_pair[0]])
+        positions[idx_f] = 1.57 #0.78  # +45°
+
+        # Back legs (5,6,7,8) swing backward (-45°)
+        idx_b = self.joint_names.index(self.legs_coxa[leg_pair[1]])
+        positions[idx_b] = -1.57 # -0.78  # -45°
 
         point.positions = positions
-        point.time_from_start.sec = 1
+        point.time_from_start.sec = 0
+        point.time_from_start.nanosec = 300_000_000  # 0.3s
         traj.points = [point]
 
         self.pub.publish(traj)
-        self.get_logger().info(f'Moving leg {leg_idx + 1}/8 (coxa only)')
+        self.get_logger().info(f'Moving pair {leg_pair[0]+1} & {leg_pair[1]+1}')
 
-        # Move to next leg in the sequence
-        self.current_step = (self.current_step + 1) % len(self.sequence)
+        # Next pair
+        self.current_step = (self.current_step + 1) % len(self.seq)
+
 
 def main(args=None):
     rclpy.init(args=args)
@@ -76,6 +80,7 @@ def main(args=None):
     except KeyboardInterrupt:
         pass
     rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
