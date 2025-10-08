@@ -30,6 +30,7 @@ install(PROGRAMS
 install(PROGRAMS
   src/gui.py
   src/gait.py
+  src/circle_gait.py
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)

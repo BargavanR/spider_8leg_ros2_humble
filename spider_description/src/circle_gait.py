@@ -39,7 +39,7 @@ class SequentialGaitPublisher(Node):
         self.current_step = 0
 
         # Faster gait (0.3 sec instead of 1 sec)
-        self.timer = self.create_timer(0.3, self.timer_callback)
+        self.timer = self.create_timer(0.1, self.timer_callback)
 
     def timer_callback(self):
         traj = JointTrajectory()
@@ -54,7 +54,7 @@ class SequentialGaitPublisher(Node):
 
         # Forward legs (1,2,3,4) swing forward (+45°)
         idx_f = self.joint_names.index(self.legs_coxa[leg_pair[0]])
-        positions[idx_f] = 1.57 #0.78  # +45°
+        positions[idx_f] = 1.57#1.57 #0.78  # +45°
 
         # Back legs (5,6,7,8) swing backward (-45°)
         idx_b = self.joint_names.index(self.legs_coxa[leg_pair[1]])
