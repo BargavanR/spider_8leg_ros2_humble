@@ -58,7 +58,7 @@ class SequentialGaitPublisher(Node):
 
         # Back legs (5,6,7,8) swing backward (-45°)
         idx_b = self.joint_names.index(self.legs_coxa[leg_pair[1]])
-        positions[idx_b] = -1.57 # -0.78  # -45°
+        positions[idx_b] = 1.57 # -0.78  # -45°
 
         point.positions = positions
         point.time_from_start.sec = 0

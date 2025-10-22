@@ -32,6 +32,7 @@
         <mesh filename="$(find spider_description)/meshes/collision/base_link.STL" />
       </geometry>
     </collision>
+
   </link>
   <link name="RL1_coxa">
     <inertial>
@@ -847,6 +848,11 @@
       <parameters>
       $(find spider_description)/config/gaz_ros2_ctl_use_sim.yaml
       </parameters>
+      <!-- Output -->
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+
+      <publish_odom>true</publish_odom>
     </plugin>
   </gazebo>
 
