@@ -1,6 +1,6 @@
 controller_manager: # Root node for ros2_control controller manager
   ros__parameters: # ROS 2 parameters for controller manager
-    update_rate: 100 # Control loop frequency (Hz) → updates controllers 100 times/sec
+    update_rate: 1000 # Control loop frequency (Hz) → updates controllers 100 times/sec
 
     joint_state_broadcaster: # A broadcaster that publishes all joint states
       type: joint_state_broadcaster/JointStateBroadcaster
@@ -36,134 +36,134 @@ position_controller: # List of all joints controlled by this controller
       - joint8_coxa
       - joint8_fumer
       - joint8_tibia
-    # gains:
-    #   joint1_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint1_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint1_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+    gains:
+      joint1_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint1_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint1_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint2_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint2_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint2_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint2_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint2_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint2_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint3_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint3_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint3_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint3_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint3_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint3_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint4_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint4_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint4_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint4_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint4_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint4_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint5_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint5_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint5_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint5_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint5_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint5_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint6_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint6_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint6_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint6_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint6_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint6_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint7_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint7_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint7_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint7_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint7_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint7_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
-    #   joint8_coxa:
-    #     p: 15.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint8_fumer:
-    #     p: 12.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
-    #   joint8_tibia:
-    #     p: 20.0
-    #     i: 0.01
-    #     d: 0.1
-    #     i_clamp: 1.0
+      joint8_coxa:
+        p: 15.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint8_fumer:
+        p: 12.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
+      joint8_tibia:
+        p: 20.0
+        i: 0.01
+        d: 0.1
+        i_clamp: 1.0
 
     # PID gains (commented out here but can be tuned per joint if needed)
     # Each joint can have its own proportional (p), integral (i), derivative (d) gains
@@ -182,3 +182,4 @@ position_controller: # List of all joints controlled by this controller
     action_monitor_rate: 20.0 # Monitor trajectory execution at 20 Hz
     allow_partial_joints_goal: false # Require commands for all joints (no partial trajectories)
 
+    update_rate: 1000 # <---- Add here permanently

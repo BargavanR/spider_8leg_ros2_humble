@@ -113,8 +113,11 @@ def generate_launch_description():
             package="robot_state_publisher",
             executable="robot_state_publisher",
             name="robot_state_publisher",
+            
             output="screen",
-            parameters=[{"robot_description": robot_description}],  # Publishes TF + URDF
+            parameters=[{"robot_description": robot_description},
+                        {"use_sim_time": True},
+        ],  # Publishes TF + URDF
         ),
 
         # ---------------------------
@@ -167,7 +170,7 @@ def generate_launch_description():
             output='screen'
         ),
 
-        # ---------------------------
+        # # ---------------------------
         # # Non-GUI joint_state_publisher
         # # ---------------------------
         # Node(
@@ -184,9 +187,9 @@ def generate_launch_description():
         # output="screen",
         # parameters=[{"robot_description": robot_description}],  # give robot model
         # ),
-            # ---------------------------
-        # Optional GUI joint publisher
-        # ---------------------------
+        # #     ---------------------------
+        # # Optional GUI joint publisher
+        # # ---------------------------
         # Node(
         #     package="joint_state_publisher_gui",
         #     executable="joint_state_publisher_gui",
