@@ -1,4 +1,9 @@
-<robot name="spider_description">
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="spider_description">
+  <xacro:include filename="$(find spider_description)/urdf/lidar.gazebo" />
+  <xacro:include filename="$(find spider_description)/urdf/realsense2_camera.xacro" />
+
+  <!-- <xacro:include filename="camera.xacro" /> -->
   <link name="dummy_base" />
 
   <joint name="dummy_base_to_base_link" type="fixed">
@@ -10,12 +15,12 @@
     <inertial>
       <origin xyz="0.0513553543804905 -0.00355010292388771 0.0158371951293718" rpy="0 0 0" />
       <mass value="0.206587820695411" />
-      <inertia ixx="9.18101041743378E-05" ixy="-1.1096915717602E-06" ixz="-2.07334737671996E-08" iyy="0.000621158029436724" iyz="3.17880975410803E-08" izz="0.000699601373790156" />
+      <inertia ixx="9.18101041743378E-05" ixy="-1.10969157176021E-06" ixz="-2.07334737671984E-08" iyy="0.000621158029436724" iyz="3.17880975410804E-08" izz="0.000699601373790156" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/base_link.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -24,20 +29,20 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/base_link.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/base_link.STL" />
       </geometry>
     </collision>
   </link>
   <link name="RL1_coxa">
     <inertial>
-      <origin xyz="-0.00349163844394274 0.017230005966643 0.0244390511872048" rpy="0 0 0" />
+      <origin xyz="-0.00349163844394271 0.017230005966643 0.0244390511872048" rpy="0 0 0" />
       <mass value="0.0118214531865819" />
-      <inertia ixx="1.54720054808557E-06" ixy="-3.57557713352019E-08" ixz="-4.02762646820984E-08" iyy="1.03828147386784E-06" iyz="-8.80078006023742E-10" izz="1.47258288978444E-06" />
+      <inertia ixx="1.54720054808557E-06" ixy="-3.57557713352019E-08" ixz="-4.02762646820984E-08" iyy="1.03828147386784E-06" iyz="-8.80078006023775E-10" izz="1.47258288978444E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL1_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL1_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -46,7 +51,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL1_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL1_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -58,14 +63,14 @@
   </joint>
   <link name="RL1_fumer">
     <inertial>
-      <origin xyz="-0.0264233888332985 -1.38777878078145E-17 -0.00234030420177742" rpy="0 0 0" />
+      <origin xyz="-0.0264233888332985 -2.08166817117217E-17 -0.00234030420177739" rpy="0 0 0" />
       <mass value="0.00732061922605987" />
-      <inertia ixx="1.66034801156123E-06" ixy="-7.94093388050907E-22" ixz="-1.49987503139404E-09" iyy="3.3348950865199E-06" iyz="1.28978137012331E-21" izz="1.8515397312667E-06" />
+      <inertia ixx="1.66034801156123E-06" ixy="-8.99972506457694E-22" ixz="-1.499875031394E-09" iyy="3.3348950865199E-06" iyz="1.31159825877939E-21" izz="1.8515397312667E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL1_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL1_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -74,7 +79,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL1_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL1_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -86,14 +91,14 @@
   </joint>
   <link name="RL1_tibia">
     <inertial>
-      <origin xyz="0.00260154713513186 -0.0130975375024425 0.000727426073779153" rpy="0 0 0" />
+      <origin xyz="0.00260154713513185 -0.0130975375024425 0.00072742607377918" rpy="0 0 0" />
       <mass value="0.013123891605465" />
-      <inertia ixx="4.2299662226924E-06" ixy="1.19149413513681E-07" ixz="-1.17548988409946E-08" iyy="7.82194147309099E-07" iyz="-2.83284559215829E-07" izz="4.42455942176531E-06" />
+      <inertia ixx="4.2299662226924E-06" ixy="1.19149413513681E-07" ixz="-1.17548988409948E-08" iyy="7.82194147309099E-07" iyz="-2.83284559215829E-07" izz="4.42455942176531E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL1_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL1_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -102,7 +107,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL1_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL1_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -116,12 +121,12 @@
     <inertial>
       <origin xyz="-0.00137410211994941 0.017230005966643 0.024648947347057" rpy="0 0 0" />
       <mass value="0.0118214531865819" />
-      <inertia ixx="1.53973619894474E-06" ixy="-3.56987341340023E-08" ixz="-4.6080725279413E-08" iyy="1.03828147386784E-06" iyz="2.20229478084549E-09" izz="1.48004723892527E-06" />
+      <inertia ixx="1.53973619894474E-06" ixy="-3.56987341340022E-08" ixz="-4.6080725279413E-08" iyy="1.03828147386784E-06" iyz="2.2022947808455E-09" izz="1.48004723892527E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL2_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL2_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -130,7 +135,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL2_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL2_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -144,12 +149,12 @@
     <inertial>
       <origin xyz="-0.0264233888332987 6.24500451351651E-17 0.0581596957982228" rpy="0 0 0" />
       <mass value="0.00732061922605988" />
-      <inertia ixx="1.66034801156124E-06" ixy="5.82335151237331E-22" ixz="-1.49987503139389E-09" iyy="3.33489508651991E-06" iyz="3.18774728562622E-22" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156124E-06" ixy="6.88214269644119E-22" ixz="-1.49987503139386E-09" iyy="3.33489508651991E-06" iyz="3.43796942092352E-22" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL2_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL2_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -158,7 +163,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL2_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL2_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -172,12 +177,12 @@
     <inertial>
       <origin xyz="-0.0562495143524853 -0.0130839593275274 -0.00677615060162512" rpy="0 0 0" />
       <mass value="0.013123891605465" />
-      <inertia ixx="4.23019150195768E-06" ixy="7.84253861591576E-08" ixz="1.01977946227722E-09" iyy="7.65338483748999E-07" iyz="-1.6371410447347E-07" izz="4.44118980606013E-06" />
+      <inertia ixx="4.23019150195768E-06" ixy="7.84253861591576E-08" ixz="1.01977946227711E-09" iyy="7.65338483748999E-07" iyz="-1.6371410447347E-07" izz="4.44118980606013E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL2_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL2_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -186,7 +191,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL2_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL2_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -200,12 +205,12 @@
     <inertial>
       <origin xyz="0.00349358134474833 0.017230005966643 0.0244387735236787" rpy="0 0 0" />
       <mass value="0.0118214531865818" />
-      <inertia ixx="1.51968642178633E-06" ixy="-3.45709794269535E-08" ixz="-5.40202742068447E-08" iyy="1.03828147386784E-06" iyz="9.17044723735258E-09" izz="1.50009701608367E-06" />
+      <inertia ixx="1.51968642178633E-06" ixy="-3.45709794269535E-08" ixz="-5.40202742068447E-08" iyy="1.03828147386784E-06" iyz="9.17044723735254E-09" izz="1.50009701608367E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL3_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL3_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -214,7 +219,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL3_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL3_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -228,12 +233,12 @@
     <inertial>
       <origin xyz="-0.0264233888332993 -3.12250225675825E-16 0.118659695798224" rpy="0 0 0" />
       <mass value="0.00732061922605988" />
-      <inertia ixx="1.66034801156124E-06" ixy="-1.05879118406788E-22" ixz="-1.49987503139562E-09" iyy="3.33489508651991E-06" iyz="-7.61987364388377E-23" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156124E-06" ixy="-5.29395592033938E-23" ixz="-1.49987503139564E-09" iyy="3.33489508651991E-06" iyz="-7.52681582497153E-23" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL3_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL3_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -242,7 +247,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL3_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL3_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -254,14 +259,14 @@
   </joint>
   <link name="RL3_tibia">
     <inertial>
-      <origin xyz="-0.118005534421714 -0.0130894519462948 0.00839605198202775" rpy="0 0 0" />
+      <origin xyz="-0.118005534421714 -0.0130894519462948 0.00839605198202772" rpy="0 0 0" />
       <mass value="0.013123891605465" />
-      <inertia ixx="4.23878065273637E-06" ixy="4.20082265127764E-08" ixz="4.18757931219035E-08" iyy="7.691544615372E-07" iyz="-2.12494160023349E-07" izz="4.42878467749324E-06" />
+      <inertia ixx="4.23878065273637E-06" ixy="4.20082265127764E-08" ixz="4.18757931219034E-08" iyy="7.69154461537199E-07" iyz="-2.12494160023349E-07" izz="4.42878467749323E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL3_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL3_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -270,7 +275,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL3_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL3_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -282,14 +287,14 @@
   </joint>
   <link name="RL4_coxa">
     <inertial>
-      <origin xyz="0.000221643372700031 0.0172339889705058 0.0247738629223978" rpy="0 0 0" />
+      <origin xyz="0.000221643372700024 0.0172339889705058 0.0247738629223978" rpy="0 0 0" />
       <mass value="0.011831113051677" />
       <inertia ixx="1.51589381883954E-06" ixy="3.36933681099745E-08" ixz="5.44221588671393E-08" iyy="1.03946591481982E-06" iyz="1.04055511028782E-08" izz="1.50574484630922E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL4_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL4_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -298,7 +303,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL4_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL4_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -310,14 +315,14 @@
   </joint>
   <link name="RL4_fumer">
     <inertial>
-      <origin xyz="-0.0264233888332989 1.38777878078145E-17 -0.176940304201777" rpy="0 0 0" />
+      <origin xyz="-0.0264233888332989 6.93889390390723E-18 -0.176940304201777" rpy="0 0 0" />
       <mass value="0.00732061922605987" />
-      <inertia ixx="1.66034801156123E-06" ixy="5.29395592033938E-22" ixz="-1.49987503139488E-09" iyy="3.3348950865199E-06" iyz="1.40101077504865E-22" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156123E-06" ixy="5.29395592033938E-22" ixz="-1.49987503139487E-09" iyy="3.3348950865199E-06" iyz="1.10684466970948E-22" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL4_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL4_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -326,7 +331,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL4_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL4_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -338,14 +343,14 @@
   </joint>
   <link name="RL4_tibia">
     <inertial>
-      <origin xyz="-0.175875204861774 -0.0124119057129757 -0.0227969872954879" rpy="0 0 0" />
+      <origin xyz="-0.175875204861774 -0.0124119057129758 -0.0227969872954879" rpy="0 0 0" />
       <mass value="0.013123891605465" />
-      <inertia ixx="4.23942335897909E-06" ixy="1.02033754178209E-07" ixz="-4.08467258993426E-09" iyy="1.36774622886964E-06" iyz="-1.36758688607792E-06" izz="3.8295502039181E-06" />
+      <inertia ixx="4.23942335897909E-06" ixy="1.02033754178209E-07" ixz="-4.08467258993433E-09" iyy="1.36774622886964E-06" iyz="-1.36758688607792E-06" izz="3.8295502039181E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/RL4_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/RL4_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -354,7 +359,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/RL4_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/RL4_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -368,12 +373,12 @@
     <inertial>
       <origin xyz="0.0170998828634738 0.0172339889705059 -0.0179272813314759" rpy="0 0 0" />
       <mass value="0.011831113051677" />
-      <inertia ixx="1.45656947113537E-06" ixy="-1.69226594240046E-08" ixz="6.66890699376806E-09" iyy="1.03946591481982E-06" iyz="-3.09377139809669E-08" izz="1.56506919401288E-06" />
+      <inertia ixx="1.45656947113537E-06" ixy="-1.69226594240046E-08" ixz="6.66890699376832E-09" iyy="1.03946591481982E-06" iyz="-3.09377139809669E-08" izz="1.56506919401288E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL1_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL1_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -382,7 +387,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL1_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL1_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -396,12 +401,12 @@
     <inertial>
       <origin xyz="-0.0264233888332986 0 0.00455969579822271" rpy="0 0 0" />
       <mass value="0.00732061922605989" />
-      <inertia ixx="1.66034801156124E-06" ixy="5.29395592033938E-23" ixz="-1.49987503139556E-09" iyy="3.33489508651991E-06" iyz="1.7570350186392E-21" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156124E-06" ixy="-2.64697796016969E-22" ixz="-1.49987503139553E-09" iyy="3.33489508651991E-06" iyz="1.79363776074467E-21" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL1_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL1_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -410,7 +415,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL1_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL1_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -424,12 +429,12 @@
     <inertial>
       <origin xyz="-0.00279894261734365 -0.0130976424430121 -0.00313843380108422" rpy="0 0 0" />
       <mass value="0.013123891605465" />
-      <inertia ixx="4.36602526509336E-06" ixy="-2.59110649699593E-07" ixz="-7.85274951562141E-08" iyy="7.97432607148881E-07" iyz="2.87128236854985E-07" izz="4.27326191952455E-06" />
+      <inertia ixx="4.36602526509336E-06" ixy="-2.59110649699593E-07" ixz="-7.85274951562137E-08" iyy="7.97432607148881E-07" iyz="2.87128236854985E-07" izz="4.27326191952455E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL1_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL1_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -438,7 +443,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL1_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL1_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -452,12 +457,12 @@
     <inertial>
       <origin xyz="0.0127223107624808 0.0169176334399643 -0.0226841712591478" rpy="0 0 0" />
       <mass value="0.011831113051677" />
-      <inertia ixx="1.56088112402009E-06" ixy="-2.81601853556498E-08" ixz="2.19396104805269E-08" iyy="1.03946591481982E-06" iyz="-2.12255249861136E-08" izz="1.4607575411285E-06" />
+      <inertia ixx="1.56088112402009E-06" ixy="-2.81601853556498E-08" ixz="2.19396104805271E-08" iyy="1.03946591481982E-06" iyz="-2.12255249861135E-08" izz="1.4607575411285E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL2_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL2_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -466,7 +471,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL2_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL2_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -478,14 +483,14 @@
   </joint>
   <link name="LL2_fumer">
     <inertial>
-      <origin xyz="-0.0264233888332989 4.16333634234434E-17 0.0725596957982222" rpy="0 0 0" />
+      <origin xyz="-0.0264233888332989 3.46944695195361E-17 0.0725596957982222" rpy="0 0 0" />
       <mass value="0.00732061922605988" />
-      <inertia ixx="1.66034801156123E-06" ixy="-9.52912065661088E-22" ixz="-1.49987503139381E-09" iyy="3.33489508651991E-06" iyz="-3.12570873968475E-22" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156123E-06" ixy="-1.11173074327127E-21" ixz="-1.49987503139377E-09" iyy="3.33489508651991E-06" iyz="-3.43796942092352E-22" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL2_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL2_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -494,7 +499,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL2_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL2_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -513,7 +518,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL2_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL2_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -522,7 +527,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL2_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL2_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -536,12 +541,12 @@
     <inertial>
       <origin xyz="0.0139602506872404 0.0172339889705058 -0.0204671642059132" rpy="0 0 0" />
       <mass value="0.011831113051677" />
-      <inertia ixx="1.46157119792145E-06" ixy="-2.17239801391936E-08" ixz="2.37095554539396E-08" iyy="1.03946591481982E-06" iyz="-2.7777459121755E-08" izz="1.56006746722729E-06" />
+      <inertia ixx="1.46157119792145E-06" ixy="-2.17239801391936E-08" ixz="2.37095554539394E-08" iyy="1.03946591481982E-06" iyz="-2.7777459121755E-08" izz="1.56006746722729E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL3_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL3_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -550,7 +555,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL3_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL3_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -564,12 +569,12 @@
     <inertial>
       <origin xyz="-0.0264233888332988 1.66533453693773E-16 0.125559695798222" rpy="0 0 0" />
       <mass value="0.00732061922605986" />
-      <inertia ixx="1.66034801156123E-06" ixy="4.76456032830544E-22" ixz="-1.49987503139544E-09" iyy="3.3348950865199E-06" iyz="1.16058502206239E-22" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156123E-06" ixy="6.88214269644119E-22" ixz="-1.49987503139546E-09" iyy="3.3348950865199E-06" iyz="1.01789636639699E-22" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL3_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL3_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -578,7 +583,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL3_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL3_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -592,12 +597,12 @@
     <inertial>
       <origin xyz="-0.094631241235736 -0.00999543048455966 -0.0821821673541989" rpy="0 0 0" />
       <mass value="0.021123795973342" />
-      <inertia ixx="4.99508664772741E-06" ixy="-1.3939361777078E-07" ixz="-2.6733864336624E-07" iyy="1.32635282258011E-06" iyz="1.78140065284283E-07" izz="5.01286567758949E-06" />
+      <inertia ixx="4.99508664772741E-06" ixy="-1.3939361777078E-07" ixz="-2.6733864336624E-07" iyy="1.32635282258011E-06" iyz="1.78140065284283E-07" izz="5.0128656775895E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL3_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL3_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -606,7 +611,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL3_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL3_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -620,12 +625,12 @@
     <inertial>
       <origin xyz="0.000589847633677063 0.017230005966643 -0.0246801710229706" rpy="0 0 0" />
       <mass value="0.0118214531865818" />
-      <inertia ixx="1.53674766199004E-06" ixy="3.56106840430809E-08" ixz="-4.78840740951851E-08" iyy="1.03828147386784E-06" iyz="-3.33600105752004E-09" izz="1.48303577587997E-06" />
+      <inertia ixx="1.53674766199004E-06" ixy="3.56106840430809E-08" ixz="-4.7884074095185E-08" iyy="1.03828147386784E-06" iyz="-3.33600105752003E-09" izz="1.48303577587997E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL4_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL4_coxa.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -634,7 +639,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL4_coxa.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL4_coxa.STL" />
       </geometry>
     </collision>
   </link>
@@ -646,14 +651,14 @@
   </joint>
   <link name="LL4_fumer">
     <inertial>
-      <origin xyz="-0.0264233888332985 6.93889390390723E-18 -0.183840304201777" rpy="0 0 0" />
+      <origin xyz="-0.0264233888332985 1.38777878078145E-17 -0.183840304201777" rpy="0 0 0" />
       <mass value="0.00732061922605988" />
-      <inertia ixx="1.66034801156124E-06" ixy="-6.35274710440725E-22" ixz="-1.49987503139491E-09" iyy="3.33489508651991E-06" iyz="-7.0411110897272E-23" izz="1.85153973126671E-06" />
+      <inertia ixx="1.66034801156124E-06" ixy="-4.76456032830544E-22" ixz="-1.49987503139489E-09" iyy="3.33489508651991E-06" iyz="-1.02981347516547E-22" izz="1.85153973126671E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL4_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL4_fumer.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -662,7 +667,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL4_fumer.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL4_fumer.STL" />
       </geometry>
     </collision>
   </link>
@@ -674,14 +679,14 @@
   </joint>
   <link name="LL4_tibia">
     <inertial>
-      <origin xyz="-0.180394375659539 -0.0130639420354095 -0.0372472679266888" rpy="0 0 0" />
+      <origin xyz="-0.180394375659539 -0.0130639420354095 -0.0372472679266889" rpy="0 0 0" />
       <mass value="0.013123891605465" />
       <inertia ixx="4.2246722620473E-06" ixy="-1.76333803207243E-07" ixz="9.44080756640397E-09" iyy="8.5838893710165E-07" iyz="5.7833463564039E-07" izz="4.35365859261787E-06" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/visual/LL4_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/visual/LL4_tibia.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -690,7 +695,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="file://$(find spider_description)/meshes/collision/LL4_tibia.STL" />
+        <mesh filename="$(find spider_description)/meshes/collision/LL4_tibia.STL" />
       </geometry>
     </collision>
   </link>
@@ -700,7 +705,6 @@
     <child link="LL4_tibia" />
     <axis xyz="0.978286549337221 0 0.207256911551514" />
   </joint>
-
   <ros2_control name="LeggedSystemPositionOnly" type="system">
     <hardware>
       <plugin>gz_ros2_control/GazeboSimSystem</plugin>
@@ -839,6 +843,9 @@
     <plugin name="ign_ros2_control::IgnitionROS2ControlPlugin" filename="libgz_ros2_control-system.so">
       <parameters>
       $(find spider_description)/config/controller.yaml
+      </parameters>
+      <parameters>
+      $(find spider_description)/config/gaz_ros2_ctl_use_sim.yaml
       </parameters>
     </plugin>
   </gazebo>

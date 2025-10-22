@@ -178,6 +178,7 @@ position_controller: # List of all joints controlled by this controller
       - velocity # Reports current joint velocities
 
     # Optional: fine-tuning for trajectory execution
-    state_publish_rate: 10.0 # Publish state feedback at 10 Hz
+    state_publish_rate: 20.0 # Publish state feedback at 10 Hz
     action_monitor_rate: 20.0 # Monitor trajectory execution at 20 Hz
     allow_partial_joints_goal: false # Require commands for all joints (no partial trajectories)
+

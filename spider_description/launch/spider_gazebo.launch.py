@@ -66,7 +66,23 @@ def generate_launch_description():
         Command(["xacro ", urdf_file]),  # Runs xacro to convert into URDF
         value_type=str,
     )
+    
+    bridge_params = os.path.join(
+    pkg_share,
+    'config',
+    'bridge.yaml')
 
+    start_gazebo_ros_bridge_cmd = Node(
+    package='ros_gz_bridge',
+    executable='parameter_bridge',
+    arguments=[
+        '--ros-args',
+        '-p',
+        f'config_file:={bridge_params}',
+    ],
+    output='screen',
+    )
+   
     return LaunchDescription([
         # ---------------------------
         # Add Gazebo resource paths
@@ -116,7 +132,7 @@ def generate_launch_description():
                 "-z", "0.16",                   # Z position (lift off ground)
                 "-R", "0.0",                    # Roll
                 "-P", "0.0",                    # Pitch
-                "-Y", "1.57"                    # Yaw (90 degrees)
+                "-Y", "-1.57"                    # Yaw (90 degrees)
             ],
             output="screen",
         ),
@@ -178,4 +194,5 @@ def generate_launch_description():
         #     output="screen",
         #     parameters=[controllers_param],
         # ),
+        start_gazebo_ros_bridge_cmd,
     ])

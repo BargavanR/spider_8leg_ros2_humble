@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <link name="camera_link">
+        <inertial>
+            <origin xyz="-0.037132566899715 0.00732744278960867 0.0127" rpy="0 0 0" />
+            <mass value="0.0451110769034359" />
+            <inertia ixx="6.52411581573381E-06" ixy="-2.20031957127054E-21" ixz="1.80557491338072E-22" iyy="1.3300760125992E-05" iyz="3.78205861915377E-22" izz="1.49742322125557E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="$(find spider_description)/meshes/visual/camera_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.494 0.494 0.494 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="$(find spider_description)/meshes/collision/camera_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="camera_frame" type="fixed">
+        <origin xyz="-0.012455 0.0027058 0.0276" rpy="0 0 3.1416" />
+        <parent link="base_link" />
+        <child link="camera_link" />
+    </joint>
+
+    <!-- Fixed Gazebo RGB-D camera -->
+    <gazebo reference="camera_link">
+        <sensor name="camera_sensor" type="rgbd_camera">
+            <ignition_frame_id>camera_link</ignition_frame_id>
+            <camera name="camera_sensor">
+                <horizontal_fov>1.2043</horizontal_fov>
+                <lens>
+                    <intrinsics>
+                        <fx>915.3</fx>
+                        <fy>914.03</fy>
+                        <cx>642.72</cx>
+                        <cy>361.98</cy>
+                        <s>0</s>
+                    </intrinsics>
+                </lens>
+                <distortion>
+                    <k1>0.0</k1>
+                    <k2>0.0</k2>
+                    <k3>0.0</k3>
+                    <p1>0.0</p1>
+                    <p2>0.0</p2>
+                    <center>0.5 0.5</center>
+                </distortion>
+                <image>
+                    <width>1280</width>
+                    <height>720</height>
+                    <format>R8G8B8</format>
+                </image>
+                <clip>
+                    <near>0.1</near>
+                    <far>100</far>
+                </clip>
+                <depth_camera>
+                    <clip>
+                        <near>0.1</near>
+                        <far>100</far>
+                    </clip>
+                </depth_camera>
+                <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.007</stddev>
+                </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>5</update_rate>
+            <visualize>0</visualize>
+            <topic>camera</topic>
+        </sensor>
+    </gazebo>
+
+</robot>

@@ -15,6 +15,11 @@ find_package(rclpy REQUIRED)
 find_package(urdf REQUIRED)
 find_package(xacro REQUIRED)
 find_package(spider_warehouse REQUIRED)
+
+find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+add_executable(scan_filter src/scan_filter.cpp)
+ament_target_dependencies(scan_filter rclcpp std_msgs sensor_msgs)
 install(PROGRAMS
   src/test.py
   DESTINATION lib/${PROJECT_NAME}
@@ -31,6 +36,7 @@ install(PROGRAMS
   src/gui.py
   src/gait.py
   src/circle_gait.py
+  src/ike_gait.py
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)
