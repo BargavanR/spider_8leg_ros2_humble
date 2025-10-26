@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-
 import rclpy
 from rclpy.node import Node
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
-class SidewaysGaitPublisher(Node):
+class RotationGaitPublisher(Node):
     def __init__(self):
-        super().__init__('sideways_gait_publisher')
+        super().__init__('rotation_gait_publisher')
         self.pub = self.create_publisher(JointTrajectory, '/position_controller/joint_trajectory', 10)
 
         self.joint_names = [
@@ -20,26 +19,42 @@ class SidewaysGaitPublisher(Node):
             'joint8_coxa', 'joint8_fumer', 'joint8_tibia'
         ]
 
-        # Left side legs (0-3) and right side legs (4-7)
+        # Left side legs
         self.left_legs = [0, 1, 2, 3]
+        # Right side legs
         self.right_legs = [4, 5, 6, 7]
         
         # Diagonal pairs for stability
         self.leg_pairs = [
-            ([0, 2, 5, 7], [1, 3, 4, 6]),  # Group A
-            ([1, 3, 4, 6], [0, 2, 5, 7])   # Group B
+            ([0, 2, 5, 7], [1, 3, 4, 6]),
+            ([1, 3, 4, 6], [0, 2, 5, 7])
         ]
         
         self.state = 0
-        self.substep = 0  # 0=lift, 1=swing, 2=lower
+        self.substep = 0
         
-        # Parameters
-        self.sideways_reach = 0.4   # Femur lean for sideways motion
+        # In-place rotation parameters
+        # Left legs go BACKWARD (negative), Right legs go FORWARD (positive)
+        # This makes the robot spin RIGHT (clockwise) in place
+        self.left_stride = -0.25   # Left side moves backward
+        self.right_stride = 0.25   # Right side moves forward
         self.lift_height = 0.35
-        self.coxa_angle = 0.3       # Point legs outward for crab walk
         
         self.timer = self.create_timer(0.2, self.timer_callback)
-        self.get_logger().info('🦀 TRUE Crab walk - Moving RIGHT!')
+        self.get_logger().info('In-place RIGHT rotation (clockwise spin)')
+
+    def get_coxa_angle(self, leg_idx, direction):
+        """
+        Get coxa angle for rotation - left/right legs move opposite directions
+        """
+        is_left = leg_idx in self.left_legs
+        
+        if direction == 'forward':
+            # Left legs: negative (backward), Right legs: positive (forward)
+            return self.left_stride if is_left else self.right_stride
+        else:  # backward
+            # Opposite of forward
+            return -self.left_stride if is_left else -self.right_stride
 
     def timer_callback(self):
         traj = JointTrajectory()
@@ -50,72 +65,50 @@ class SidewaysGaitPublisher(Node):
         active_legs, support_legs = self.leg_pairs[self.state]
 
         if self.substep == 0:
-            # SUBSTEP 0: Lift active legs, position for reaching right
+            # Lift active legs
             for leg in active_legs:
                 coxa_idx = leg * 3
                 femur_idx = coxa_idx + 1
-                is_left = leg in self.left_legs
-                
-                # Point legs outward perpendicular to body
-                positions[coxa_idx] = -self.coxa_angle if is_left else self.coxa_angle
-                # Lift up
+                positions[coxa_idx] = self.get_coxa_angle(leg, 'forward')
                 positions[femur_idx] = self.lift_height
             
-            # Support legs on ground, leaning left (pushing right)
             for leg in support_legs:
                 coxa_idx = leg * 3
                 femur_idx = coxa_idx + 1
-                is_left = leg in self.left_legs
-                
-                positions[coxa_idx] = -self.coxa_angle if is_left else self.coxa_angle
-                # Left legs lean OUT (positive), right legs lean IN (negative)
-                # This pushes body to the RIGHT
-                positions[femur_idx] = self.sideways_reach if is_left else -self.sideways_reach
+                positions[coxa_idx] = self.get_coxa_angle(leg, 'backward')
+                positions[femur_idx] = 0.0
 
-            self.get_logger().info(f'State {self.state} - Lift & reach')
+            self.get_logger().info(f'State {self.state} - Lift & rotate')
 
         elif self.substep == 1:
-            # SUBSTEP 1: Active legs swing to right position while lifted
-            # Support legs push body sideways
+            # Swing active to opposite position
             for leg in active_legs:
                 coxa_idx = leg * 3
                 femur_idx = coxa_idx + 1
-                is_left = leg in self.left_legs
-                
-                positions[coxa_idx] = -self.coxa_angle if is_left else self.coxa_angle
-                # Left legs lean IN (negative), right legs lean OUT (positive)
-                # Preparing to land on right side
+                positions[coxa_idx] = self.get_coxa_angle(leg, 'backward')
                 positions[femur_idx] = self.lift_height
-
-            for leg in support_legs:
-                coxa_idx = leg * 3
-                femur_idx = coxa_idx + 1
-                is_left = leg in self.left_legs
-                
-                positions[coxa_idx] = -self.coxa_angle if is_left else self.coxa_angle
-                # Continue pushing right
-                positions[femur_idx] = -self.sideways_reach if is_left else self.sideways_reach
-
-            self.get_logger().info(f'State {self.state} - Swing right')
-
-        else:  # substep == 2
-            # SUBSTEP 2: Lower active legs on right side
-            for leg in active_legs:
-                coxa_idx = leg * 3
-                femur_idx = coxa_idx + 1
-                is_left = leg in self.left_legs
-                
-                positions[coxa_idx] = -self.coxa_angle if is_left else self.coxa_angle
-                # Land with lean
-                positions[femur_idx] = -self.sideways_reach if is_left else self.sideways_reach
             
             for leg in support_legs:
                 coxa_idx = leg * 3
                 femur_idx = coxa_idx + 1
-                is_left = leg in self.left_legs
-                
-                positions[coxa_idx] = -self.coxa_angle if is_left else self.coxa_angle
-                positions[femur_idx] = -self.sideways_reach if is_left else self.sideways_reach
+                positions[coxa_idx] = self.get_coxa_angle(leg, 'forward')
+                positions[femur_idx] = 0.0
+
+            self.get_logger().info(f'State {self.state} - Swing opposite')
+
+        else:  # substep == 2
+            # Lower active legs
+            for leg in active_legs:
+                coxa_idx = leg * 3
+                femur_idx = coxa_idx + 1
+                positions[coxa_idx] = self.get_coxa_angle(leg, 'backward')
+                positions[femur_idx] = 0.0
+            
+            for leg in support_legs:
+                coxa_idx = leg * 3
+                femur_idx = coxa_idx + 1
+                positions[coxa_idx] = self.get_coxa_angle(leg, 'forward')
+                positions[femur_idx] = 0.0
 
             self.get_logger().info(f'State {self.state} - Lower')
 
@@ -135,7 +128,7 @@ class SidewaysGaitPublisher(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = SidewaysGaitPublisher()
+    node = RotationGaitPublisher()
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

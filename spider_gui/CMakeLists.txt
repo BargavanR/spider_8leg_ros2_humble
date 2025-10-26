@@ -21,6 +21,7 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 install(PROGRAMS
   src/joint_gui.py
+  src/joystick_control.py
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)

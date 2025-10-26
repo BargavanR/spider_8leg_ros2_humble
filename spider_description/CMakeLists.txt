@@ -28,15 +28,11 @@ install(PROGRAMS
   src/test1.py
   DESTINATION lib/${PROJECT_NAME}
 )
+
 install(PROGRAMS
-  src/test2.py
-  DESTINATION lib/${PROJECT_NAME}
-)
-install(PROGRAMS
-  src/gui.py
   src/gait.py
-  src/circle_gait.py
   src/ike_gait.py
+  src/straight.py 
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)

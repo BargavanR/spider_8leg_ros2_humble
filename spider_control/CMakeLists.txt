@@ -19,7 +19,18 @@ find_package(sensor_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-if(BUILD_TESTING)
+install(PROGRAMS
+  src/Forward_perfect.py
+  src/Backward_perfect.py 
+  src/Left_Turn.py 
+  src/Right_Turn.py 
+  src/Circle_C.py 
+  src/Circle_CC.py 
+  src/Dancer_spider.py 
+  src/Jolly_mode_play.py 
+  DESTINATION lib/${PROJECT_NAME}
+)
+  if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
   # the following line skips the linter which checks for copyrights
   # comment the line when a copyright and license is added to all source files
@@ -32,3 +43,15 @@ if(BUILD_TESTING)
 endif()
 
 ament_package()
+
+  # # Scripts mapping
+  #       self.scripts = {
+  #           'Forward': 'Forward_perfect.py',
+  #           'Backward': 'Backward_perfect.py',
+  #           'Left Turn': 'Left_Turn.py',
+  #           'Right Turn': 'Right_Turn.py',
+  #           'Circle CW': 'Circle_C.py',
+  #           'Circle CCW': 'Circle_CC.py',
+  #           'Dance': 'Dancer_spider.py',
+  #           'Jolly Mode': 'Jolly_mode_play.py'
+  #       }

@@ -130,7 +130,7 @@ def generate_launch_description():
                 "-name", "spider_description",  # Robot name inside Gazebo
                 "-topic", "robot_description",  # Spawn from /robot_description
                 "-allow_renaming", "true",      # Avoid conflicts if duplicate name
-                "-x", "-2.0499",                # X position
+                "-x", "-3.0499",                # X position
                 "-y", "-5.969",                 # Y position
                 "-z", "0.16",                   # Z position (lift off ground)
                 "-R", "0.0",                    # Roll

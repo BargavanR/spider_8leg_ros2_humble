@@ -116,7 +116,7 @@
     <origin xyz="-0.055 0 0" rpy="3.14159265358979 1.35383304701328 0.527393489709591" />
     <parent link="RL1_fumer" />
     <child link="RL1_tibia" />
-    <axis xyz="0.976555650922224 0 0.215265093900221" />
+    <axis xyz="-0.976555650922224 0 -0.215265093900221" />
   </joint>
   <link name="RL2_coxa">
     <inertial>
@@ -200,7 +200,7 @@
     <origin xyz="-0.055 0 0" rpy="-3.14159265358979 1.4400547052635 0.491910301591065" />
     <parent link="RL2_fumer" />
     <child link="RL2_tibia" />
-    <axis xyz="0.991465481571485 0 0.130369470552824" />
+    <axis xyz="-0.991465481571485 0 -0.130369470552824" />
   </joint>
   <link name="RL3_coxa">
     <inertial>
@@ -284,7 +284,7 @@
     <origin xyz="-0.055 0 0" rpy="0 1.50385829483433 -2.63968666156776" />
     <parent link="RL3_fumer" />
     <child link="RL3_tibia" />
-    <axis xyz="0.997760486341758 0 -0.0668880549504799" />
+    <axis xyz="-0.997760486341758 0 0.0668880549504799" />
   </joint>
   <link name="RL4_coxa">
     <inertial>
@@ -340,7 +340,7 @@
     <origin xyz="0.177604166796266 0.0221000000000001 0.0464247771842149" rpy="1.3624761407313 1.03768167086435 1.39071609018261" />
     <parent link="RL4_coxa" />
     <child link="RL4_fumer" />
-    <axis xyz="0 0 1" />
+    <axis xyz="0 0 -1" />
   </joint>
   <link name="RL4_tibia">
     <inertial>
@@ -368,7 +368,7 @@
     <origin xyz="-0.055 0 0" rpy="0 -1.4654938088774 -0.864064197891256" />
     <parent link="RL4_fumer" />
     <child link="RL4_tibia" />
-    <axis xyz="0.994460811195995 0 0.105108015847522" />
+    <axis xyz="-0.994460811195995 0 -0.105108015847522" />
   </joint>
   <link name="LL1_coxa">
     <inertial>
@@ -396,7 +396,7 @@
     <origin xyz="0.14757063197026 0.0399393134553611 0.00465000000000003" rpy="1.5707963267949 0 0.876029873391859" />
     <parent link="base_link" />
     <child link="LL1_coxa" />
-    <axis xyz="0 1 0" />
+    <axis xyz="0 -1 0" />
   </joint>
   <link name="LL1_fumer">
     <inertial>
@@ -424,7 +424,7 @@
     <origin xyz="0.0211255891188233 0.0221 -0.0176056662578457" rpy="-2.74678119264294 -0.58768354984189 2.49709435666674" />
     <parent link="LL1_coxa" />
     <child link="LL1_fumer" />
-    <axis xyz="0 0 1" />
+    <axis xyz="0 0 -1" />
   </joint>
   <link name="LL1_tibia">
     <inertial>
@@ -480,7 +480,7 @@
     <origin xyz="0.0870706319702601 0.0399393134553608 0.00464999999999998" rpy="1.5707963267949 0 0.840128894013488" />
     <parent link="base_link" />
     <child link="LL2_coxa" />
-    <axis xyz="0 1 0" />
+    <axis xyz="0 -1 0" />
   </joint>
   <link name="LL2_fumer">
     <inertial>
@@ -508,7 +508,7 @@
     <origin xyz="0.0608557453435872 0.0221 0.026703525210662" rpy="-2.72035311532009 -0.616222550074482 2.48212725475599" />
     <parent link="LL2_coxa" />
     <child link="LL2_fumer" />
-    <axis xyz="0 0 1" />
+    <axis xyz="0 0 -1" />
   </joint>
   <link name="LL2_tibia">
     <inertial>
@@ -564,7 +564,7 @@
     <origin xyz="0.0265706319702602 0.0399393134553611 0.00464999999999998" rpy="1.5707963267949 0 0.712846787592376" />
     <parent link="base_link" />
     <child link="LL3_coxa" />
-    <axis xyz="0 1 0" />
+    <axis xyz="0 -1 0" />
   </joint>
   <link name="LL3_fumer">
     <inertial>
@@ -592,7 +592,7 @@
     <origin xyz="0.10952160956792 0.0221 0.0583289553965433" rpy="-2.61722554755421 -0.71438242643614 2.41835522432309" />
     <parent link="LL3_coxa" />
     <child link="LL3_fumer" />
-    <axis xyz="0 0 1" />
+    <axis xyz="0 0 -1" />
   </joint>
   <link name="LL3_tibia">
     <inertial>
@@ -648,7 +648,7 @@
     <origin xyz="-0.0339293680297398 0.039939313455361 0.00464999999999999" rpy="1.5707963267949 0 0.0989474826412098" />
     <parent link="base_link" />
     <child link="LL4_coxa" />
-    <axis xyz="0 1 0" />
+    <axis xyz="0 -1 0" />
   </joint>
   <link name="LL4_fumer">
     <inertial>

@@ -75,7 +75,8 @@ class JointGUI(Node, QWidget):
         msg.joint_names = self.joint_names
         point = JointTrajectoryPoint()
         point.positions = self.positions
-        point.time_from_start.sec = 1
+        point.time_from_start.sec = 0
+        point.time_from_start.nanosec = 200_000_000  # 0.2 seconds
         msg.points.append(point)
         self.publisher.publish(msg)
         print(f"Published positions: {self.positions}")

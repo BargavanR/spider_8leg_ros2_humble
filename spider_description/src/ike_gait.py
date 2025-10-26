@@ -155,18 +155,18 @@ class SequentialLegGait(Node):
             ### make [0][2]  2 in all second for dancee 
             ### 1 for rotational 
             
-        foot_targets[0][1] -= STEP_SIZE  # g1 forward X
-        foot_targets[1][1] -= STEP_SIZE  # g2 forward X
-        foot_targets[2][1] += STEP_SIZE*2  # g3 backward X
-        foot_targets[3][1] += STEP_SIZE*2 # g4 backward X
+        foot_targets[0][1] += STEP_SIZE  # g1 forward X
+        foot_targets[1][1] += STEP_SIZE  # g2 forward X
+        foot_targets[2][1] += STEP_SIZE  # g3 backward X
+        foot_targets[3][1] += STEP_SIZE # g4 backward X
 
         # Compute IK and assign
         legs = [g1,g2,g3,g4]
         for i, leg in enumerate(legs):
             coxa, femur, tibia = leg_ik(foot_targets[i], base_positions[leg], L1, L2, L3)
-            joint_positions[leg*3]   = -coxa
+            joint_positions[leg*3]   = coxa
             joint_positions[leg*3+1] = -femur
-            joint_positions[leg*3+2] = -tibia
+            joint_positions[leg*3+2] =tibia
 
         # Publish
         point.positions = joint_positions
