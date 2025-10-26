@@ -6,7 +6,7 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
 class JumpGaitPublisher(Node):
     def __init__(self):
-        super().__init__('jump_gait_publisher')
+        super().__init__('jolly_gait_publisher')
         self.pub = self.create_publisher(JointTrajectory, '/position_controller/joint_trajectory', 10)
 
         self.joint_names = [

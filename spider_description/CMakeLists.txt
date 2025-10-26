@@ -20,19 +20,14 @@ find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
 add_executable(scan_filter src/scan_filter.cpp)
 ament_target_dependencies(scan_filter rclcpp std_msgs sensor_msgs)
-install(PROGRAMS
-  src/test.py
-  DESTINATION lib/${PROJECT_NAME}
-)
+
 install(PROGRAMS
   src/test1.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
 install(PROGRAMS
-  src/gait.py
   src/ike_gait.py
-  src/straight.py 
   DESTINATION lib/${PROJECT_NAME}
 )
 if(BUILD_TESTING)

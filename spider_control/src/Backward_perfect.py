@@ -7,7 +7,7 @@ from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
 
 class MirrorGaitPublisher(Node):
     def __init__(self):
-        super().__init__('mirror_gait_publisher')
+        super().__init__('Backward_gait_publisher')
         self.pub = self.create_publisher(JointTrajectory, '/position_controller/joint_trajectory', 10)
 
         self.joint_names = [
